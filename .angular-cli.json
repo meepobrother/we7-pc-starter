@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.less"
+        "styles.less",
+        "theme.scss"
       ],
       "scripts": [
         "../node_modules/@antv/g2/dist/g2.min.js",

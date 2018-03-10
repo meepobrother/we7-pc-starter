@@ -21,7 +21,8 @@
     "lint-staged": "lint-staged",
     "e2e": "ng e2e",
     "test": "ng test -sr -sm=false",
-    "test-coverage": "ng test -sr -cc -sm=false"
+    "test-coverage": "ng test -sr -cc -sm=false",
+    "git": "git add . && git commit -m 'update to save' && git push origin master"
   },
   "dependencies": {
     "@angular/animations": "^5.0.0",
