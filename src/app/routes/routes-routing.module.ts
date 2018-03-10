@@ -21,6 +21,12 @@ import { ShareSettingPage } from './setting/share-setting/share-setting';
 import { HomeSettingPage } from './setting/home-setting/home-setting';
 import { IndexSettingPage } from './setting/index-setting/index-setting';
 import { FooterSettingPage } from './setting/footer-setting/footer-setting';
+import { SystemSettingPage } from './setting/system-setting/system-setting';
+import { SmsSettingPage } from './setting/sms-setting/sms-setting';
+
+import { RunnerManage } from './manage/runner-manage/runner-manage';
+import { TaskManage } from './manage/task-manage/task-manage';
+import { MemberManage } from './manage/member-manage/member-manage';
 
 
 const routes: Routes = [
@@ -30,11 +36,18 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
-            { path: 'setting', component: SettingPage, data: { title: '系统设置' } },
+            { path: 'setting', component: SettingPage, data: { title: '设置' } },
             { path: 'sharesetting', component: ShareSettingPage, data: { title: '分享设置' } },
             { path: 'footersetting', component: FooterSettingPage, data: { title: '页脚设置' } },
             { path: 'homesetting', component: HomeSettingPage, data: { title: '个人中心设置' } },
             { path: 'indexsetting', component: IndexSettingPage, data: { title: '首页设置' } },
+            { path: 'systemsetting', component: SystemSettingPage, data: { title: '系统设置' } },
+            { path: 'smssetting', component: SmsSettingPage, data: { title: '短信设置' } },
+
+            { path: 'runnermanage', component: RunnerManage, data: { title: '跑腿管理' } },
+            { path: 'taskmanage', component: TaskManage, data: { title: '任务管理' } },
+            { path: 'membermanage', component: MemberManage, data: { title: '会员管理' } },
+            
         ]
     },
     {

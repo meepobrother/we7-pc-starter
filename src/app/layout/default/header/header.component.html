@@ -1,7 +1,7 @@
 <div class="logo">
     <a [routerLink]="['/']">
-        <img class="expanded" src="./assets/img/logo-full.svg" alt="{{settings.app.name}}" style="max-height:40px;" />
-        <img class="collapsed" src="./assets/img/logo.svg" alt="{{settings.app.name}}" style="max-height:30px;" />
+        <div class="expanded">同城跑腿</div>
+        <div class="collapsed">跑腿</div>
     </a>
 </div>
 <div class="top-nav-wrap">
@@ -13,11 +13,11 @@
             </div>
         </li>
         <!-- Github Page -->
-        <li>
-            <a class="item" href="//github.com/cipchk/ng-alain" target="_blank">
+        <!-- <li>
+            <a class="item" href="http://s.we7.cc/module-850.html" target="_blank">
                 <i class="anticon anticon-github"></i>
             </a>
-        </li>
+        </li> -->
         <!-- Search Button -->
         <li class="header-search__btn" (click)="searchToggleChange()">
             <div class="item">

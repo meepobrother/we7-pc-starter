@@ -19,6 +19,12 @@ import { ShareSettingPage } from './setting/share-setting/share-setting';
 import { HomeSettingPage } from './setting/home-setting/home-setting';
 import { IndexSettingPage } from './setting/index-setting/index-setting';
 import { FooterSettingPage } from './setting/footer-setting/footer-setting';
+import { SystemSettingPage } from './setting/system-setting/system-setting';
+import { SmsSettingPage } from './setting/sms-setting/sms-setting';
+
+import { RunnerManage } from './manage/runner-manage/runner-manage';
+import { TaskManage } from './manage/task-manage/task-manage';
+import { MemberManage } from './manage/member-manage/member-manage';
 
 @NgModule({
     imports: [SharedModule, RouteRoutingModule],
@@ -38,7 +44,13 @@ import { FooterSettingPage } from './setting/footer-setting/footer-setting';
         ShareSettingPage,
         HomeSettingPage,
         IndexSettingPage,
-        FooterSettingPage
+        FooterSettingPage,
+        SystemSettingPage,
+        SmsSettingPage,
+        // manage
+        RunnerManage,
+        TaskManage,
+        MemberManage
     ]
 })
 export class RoutesModule { }

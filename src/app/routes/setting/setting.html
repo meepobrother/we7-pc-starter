@@ -1,1 +1,30 @@
-系统设置
+<nz-steps [(nzCurrent)]="current">
+    <nz-step [nzTitle]="'系统设置'"></nz-step>
+    <nz-step [nzTitle]="'短信设置'"></nz-step>
+    <nz-step [nzTitle]="'分享设置'"></nz-step>
+
+    <nz-step [nzTitle]="'底部菜单'"></nz-step>
+    <nz-step [nzTitle]="'首页设置'"></nz-step>
+    <nz-step [nzTitle]="'个人中心'"></nz-step>
+</nz-steps>
+
+<div class="steps-content">
+    <system-setting *ngIf="current === 0"></system-setting>
+    <sms-setting *ngIf="current === 1"></sms-setting>
+    <share-setting *ngIf="current === 2"></share-setting>
+    <footer-setting *ngIf="current === 3"></footer-setting>
+    <index-setting *ngIf="current === 4"></index-setting>
+    <home-setting *ngIf="current === 5"></home-setting>
+</div>
+
+<div class="steps-action">
+    <button nz-button [nzType]="'default'" (click)="pre()" *ngIf="current > 0">
+        <span>上一个</span>
+    </button>
+    <button nz-button [nzType]="'default'" (click)="next()" *ngIf="current < 5">
+        <span>下一个</span>
+    </button>
+    <button nz-button [nzType]="'primary'" (click)="done()" *ngIf="current === 5">
+        <span>完成</span>
+    </button>
+</div>

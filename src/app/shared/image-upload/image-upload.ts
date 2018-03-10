@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NzMessageService, UploadFile } from 'ng-zorro-antd';
-
+import { We7Service } from '@core/we7.service';
 @Component({
     selector: 'image-upload',
     templateUrl: 'image-upload.html',
@@ -8,11 +8,18 @@ import { NzMessageService, UploadFile } from 'ng-zorro-antd';
 })
 export class ImageUpload implements OnInit {
     loading = false;
-    avatarUrl: string;
+    avatarUrl: string = '';
+    action: string = '';
+    @Input() title: string = '选择图片';
+    @Output() onUpload: EventEmitter<any> = new EventEmitter();
+    constructor(
+        private msg: NzMessageService,
+        private we7: We7Service
+    ) { }
 
-    constructor(private msg: NzMessageService) { }
-
-    ngOnInit() { }
+    ngOnInit() {
+        this.action = this.we7.getWebUrl('uploadimage');
+    }
 
     beforeUpload = (file: File) => {
         const isJPG = file.type === 'image/jpeg';
@@ -38,11 +45,8 @@ export class ImageUpload implements OnInit {
             return;
         }
         if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            this.getBase64(info.file.originFileObj, (img: any) => {
-                this.loading = false;
-                this.avatarUrl = img;
-            });
+            this.loading = false;
+            return;
         }
     }
 }

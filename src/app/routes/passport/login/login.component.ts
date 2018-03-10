@@ -89,7 +89,7 @@ export class UserLoginComponent implements OnDestroy {
             }
 
             // 清空路由复用信息
-            this.reuseTabService.clear();
+            this.reuseTabService && this.reuseTabService.clear();
             this.tokenService.set({
                 token: '123456789',
                 name: this.userName.value,

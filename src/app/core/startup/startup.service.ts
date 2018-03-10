@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { MenuService, SettingsService, TitleService } from '@delon/theme';
 import { ACLService } from '@delon/acl';
 import { ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
-
+import { We7Service } from '../we7.service';
 /**
  * 用于应用启动时
  * 一般用来获取应用所需要的基础数据等
@@ -20,11 +20,14 @@ export class StartupService {
         private titleService: TitleService,
         @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
         private httpClient: HttpClient,
-        private injector: Injector) { }
+        private injector: Injector,
+        private we7: We7Service
+    ) { }
 
     private viaHttp(resolve: any, reject: any) {
+        let url = this.we7.getWebUrl('appdata');
         zip(
-            this.httpClient.get('assets/app-data.json')
+            this.httpClient.get(url)
         ).pipe(
             // 接收其他拦截器后产生的异常消息
             catchError(([appData]) => {
@@ -32,7 +35,6 @@ export class StartupService {
                 return [appData];
             })
         ).subscribe(([appData]) => {
-
             // application data
             const res: any = appData;
             // 应用信息：包括站点名、描述、年份
@@ -46,10 +48,10 @@ export class StartupService {
             // 设置页面标题的后缀
             this.titleService.suffix = res.app.name;
         },
-        () => { },
-        () => {
-            resolve(null);
-        });
+            () => { },
+            () => {
+                resolve(null);
+            });
     }
 
     private viaMock(resolve: any, reject: any) {
@@ -61,8 +63,8 @@ export class StartupService {
         // }
         // mock
         const app: any = {
-            name: `ng-alain`,
-            description: `Ng-zorro admin panel front-end framework`
+            name: `同城跑腿`,
+            description: `致力于同城物流解决方案`
         };
         const user: any = {
             name: 'Admin',
@@ -86,43 +88,65 @@ export class StartupService {
                         text: '仪表盘',
                         link: '/dashboard',
                         icon: 'icon-speedometer'
-                    },
-                    {
-                        text: '快捷菜单',
-                        icon: 'icon-rocket',
-                        shortcut_root: true
                     }
                 ]
             },
             {
-                text: '设置',
+                text: '管理',
                 group: true,
+                children: [{
+                    text: '任务管理',
+                    link: '/taskmanage',
+                    icon: 'icon-grid'
+                }, {
+                    text: '跑腿管理',
+                    link: '/runnermanage',
+                    icon: 'icon-grid'
+                }, {
+                    text: '会员管理',
+                    link: '/membermanage',
+                    icon: 'icon-grid'
+                }]
+            },
+            {
+                text: '设置',
+                link: '/setting',
                 children: [
                     {
-                        text: '系统设置',
+                        text: '设置',
                         link: '/setting',
-                        icon: 'icon-speedometer'
+                        icon: 'icon-settings'
                     },
                     {
-                        text: '底部菜单',
-                        link: '/footersetting',
-                        icon: 'icon-speedometer'
+                        text: '系统设置',
+                        link: '/systemsetting',
+                        icon: 'icon-settings'
                     },
                     {
-                        text: '应用首页',
-                        link: '/indexsetting',
-                        icon: 'icon-speedometer'
-                    },
-                    {
-                        text: '个人中心',
-                        link: '/homesetting',
-                        icon: 'icon-speedometer'
+                        text: '短信设置',
+                        link: '/smssetting',
+                        icon: 'icon-settings'
                     },
                     {
                         text: '分享设置',
                         link: '/sharesetting',
-                        icon: 'icon-speedometer'
-                    }
+                        icon: 'icon-settings'
+                    },
+                    {
+                        text: '底部菜单',
+                        link: '/footersetting',
+                        icon: 'icon-settings'
+                    },
+                    {
+                        text: '应用首页',
+                        link: '/indexsetting',
+                        icon: 'icon-settings'
+                    },
+                    {
+                        text: '个人中心',
+                        link: '/homesetting',
+                        icon: 'icon-settings'
+                    },
                 ]
             }
         ]);

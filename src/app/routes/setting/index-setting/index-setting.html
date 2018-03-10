@@ -1,7 +1,67 @@
-<standard-form-row grid last title="链接">
-    <nz-input-group nzCompact>
-        <input style="width: 80%" nz-input [(ngModel)]="url" placeholder="请贴入链接地址">
-        <button nz-button [nzType]="'primary'">提取</button>
-    </nz-input-group>
-    <image-upload></image-upload>
-</standard-form-row>
+<div [formGroup]="form">
+    <h2 class="title">首页滑动广告</h2>
+    <div nz-row [nzType]="'flex'" formArrayName="advs">
+        <div nz-col [nzSpan]="6" *ngFor="let item of form.get('advs').controls; let i=index;" [formGroupName]="i">
+            <nz-card style="width:240px">
+                <ng-template #body>
+                    <div class="custom-image">
+                        <img width="100%" [src]="item.image" />
+                    </div>
+                    <div class="custom-card">
+                        <h3>{{item.title}}</h3>
+                        <p>{{item.link}}</p>
+                    </div>
+                </ng-template>
+            </nz-card>
+        </div>
+        <button nz-button [nzType]="'primary'" (click)="addAdv()">
+            <span>添加广告</span>
+        </button>
+    </div>
+
+    <h2 class="title">首页导航项目</h2>
+    <div formArrayName="advs">
+        <div *ngFor="let item of form.get('grids').controls; let i=index;" [formGroupName]="i">
+            <nz-card style="width:240px">
+                <ng-template #body>
+                    <div class="custom-image">
+                        <img alt="example" width="100%" [src]="item.image" />
+                    </div>
+                    <div class="custom-card">
+                        <h3>{{item.title}}</h3>
+                        <p>{{item.url}}</p>
+                    </div>
+                </ng-template>
+            </nz-card>
+        </div>
+        <button nz-button [nzType]="'primary'" (click)="addAdv()">
+            <span>添加项目</span>
+        </button>
+    </div>
+</div>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'添加广告'" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
+    <ng-template #modalContent>
+        <div [formGroup]="advForm">
+            <standard-form-row grid last title="广告标题">
+                <nz-input-group nzCompact>
+                    <input style="width: 80%" nz-input formControlName="title" placeholder="请贴入广告标题">
+                </nz-input-group>
+            </standard-form-row>
+            <standard-form-row grid last title="广告链接">
+                <nz-input-group nzCompact>
+                    <input style="width: 80%" nz-input formControlName="link" placeholder="请贴入链接地址">
+                    <button nz-button [nzType]="'primary'">选择</button>
+                </nz-input-group>
+            </standard-form-row>
+            <standard-form-row grid last title="广告图片">
+                <nz-input-group nzCompact>
+                    <input style="width: 80%" nz-input formControlName="link" placeholder="请贴入图片地址">
+                    <nz-upload [nzAction]="action" (nzChange)="handleChange($event)">
+                        <button nz-button [nzType]="'primary'">选择</button>
+                    </nz-upload>
+                </nz-input-group>
+            </standard-form-row>
+        </div>
+    </ng-template>
+</nz-modal>
