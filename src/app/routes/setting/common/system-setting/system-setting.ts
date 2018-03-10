@@ -5,7 +5,11 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'system-setting.html'
 })
 
-export class SystemSettingPage implements OnInit {
+export class SystemSetting implements OnInit {
+    page: any = {
+        title: '',
+        desc: ''
+    };
     constructor() { }
 
     ngOnInit() { }

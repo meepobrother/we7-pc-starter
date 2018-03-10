@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
 import { StartupService } from '@core/startup/startup.service';
+import { We7Service } from '@core/we7.service';
+
 import { DefaultInterceptor } from '@core/net/default.interceptor';
 import { SimpleInterceptor } from '@delon/auth';
 // angular i18n
@@ -20,6 +22,7 @@ registerLocaleData(localeZhHans);
 import { JsonSchemaModule } from '@shared/json-schema/json-schema.module';
 import { WebUrlSerializer } from 'we7-router';
 import { UrlSerializer } from '@angular/router';
+
 export function StartupServiceFactory(startupService: StartupService): Function {
     return () => startupService.load();
 }
@@ -44,6 +47,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
         { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true},
         StartupService,
+        We7Service,
         {
             provide: APP_INITIALIZER,
             useFactory: StartupServiceFactory,

@@ -5,7 +5,12 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'share-setting.html'
 })
 
-export class ShareSettingPage implements OnInit {
+export class ShareSetting implements OnInit {
+    share: any = {
+        title: '',
+        desc: '',
+        icon: ''
+    };
     constructor() { }
 
     ngOnInit() { }

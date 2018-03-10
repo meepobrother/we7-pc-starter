@@ -10,4 +10,59 @@
 // Third Library
 .content {
     padding: 10px 0px;
+    height: 100%;
+}
+
+.App__mobileview {
+    width: 375px;
+    height: 667px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.App__nav {
+    width: 375px;
+    z-index: 5;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-right: 1px solid #dadada;
+}
+
+.App__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.background--canvas {
+    background-image: linear-gradient(90deg,hsla(0,0%,100%,.25) 1px,transparent 0),linear-gradient(0deg,hsla(0,0%,100%,.25) 1px,transparent 0);
+    background-position: 0 1px;
+    background-repeat: repeat;
+    background-size: 20px 20px;
+}
+
+.App__preview {
+    -webkit-box-flex: 5;
+    -ms-flex: 5;
+    flex: 5;
+    background-color: #eee;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 40px 0px;
+}
+
+.App__detail {
+    height: 100%;
+    overflow: scroll;
+    border-left: 1px solid #bcbab6;
 }

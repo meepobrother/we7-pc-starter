@@ -1,67 +1,29 @@
-<div [formGroup]="form">
-    <h2 class="title">首页滑动广告</h2>
-    <div nz-row [nzType]="'flex'" formArrayName="advs">
-        <div nz-col [nzSpan]="6" *ngFor="let item of form.get('advs').controls; let i=index;" [formGroupName]="i">
-            <nz-card style="width:240px">
-                <ng-template #body>
-                    <div class="custom-image">
-                        <img width="100%" [src]="item.image" />
-                    </div>
-                    <div class="custom-card">
-                        <h3>{{item.title}}</h3>
-                        <p>{{item.link}}</p>
-                    </div>
-                </ng-template>
-            </nz-card>
+<div nz-row>
+    <div nz-col [nzSpan]="14" [nzPush]="10">
+        <div class="App__detail">
+            <div [formGroup]="form">
+                <nz-tabset>
+                    <nz-tab *ngFor="let tab of tabs">
+                        <ng-template #nzTabHeading>
+                            {{tab.name}}
+                        </ng-template>
+                        <system-setting *ngIf="tab.code==='system'"></system-setting>
+                        <share-setting *ngIf="tab.code==='share'"></share-setting>
+                        <sidebar-setting *ngIf="tab.code==='sidebar'"></sidebar-setting>
+                        <advs-setting *ngIf="tab.code==='advs'"></advs-setting>
+                        <grids-setting *ngIf="tab.code==='grids'"></grids-setting>
+                        <quick-setting *ngIf="tab.code==='quick'"></quick-setting>
+                        <footer-setting *ngIf="tab.code==='footer'"></footer-setting>
+                    </nz-tab>
+                </nz-tabset>
+            </div>
         </div>
-        <button nz-button [nzType]="'primary'" (click)="addAdv()">
-            <span>添加广告</span>
-        </button>
     </div>
-
-    <h2 class="title">首页导航项目</h2>
-    <div formArrayName="advs">
-        <div *ngFor="let item of form.get('grids').controls; let i=index;" [formGroupName]="i">
-            <nz-card style="width:240px">
-                <ng-template #body>
-                    <div class="custom-image">
-                        <img alt="example" width="100%" [src]="item.image" />
-                    </div>
-                    <div class="custom-card">
-                        <h3>{{item.title}}</h3>
-                        <p>{{item.url}}</p>
-                    </div>
-                </ng-template>
-            </nz-card>
+    <div nz-col [nzSpan]="10" [nzPull]="14">
+        <div class="App__preview background--canvas flex-center">
+            <div class="App__mobileview">
+                <iframe src="http://localhost:4200/app/index.php?i=2&c=entry&m=imeepos_runner&do=index" frameborder="0"></iframe>
+            </div>
         </div>
-        <button nz-button [nzType]="'primary'" (click)="addAdv()">
-            <span>添加项目</span>
-        </button>
     </div>
 </div>
-
-<nz-modal [nzVisible]="isVisible" [nzTitle]="'添加广告'" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
-    <ng-template #modalContent>
-        <div [formGroup]="advForm">
-            <standard-form-row grid last title="广告标题">
-                <nz-input-group nzCompact>
-                    <input style="width: 80%" nz-input formControlName="title" placeholder="请贴入广告标题">
-                </nz-input-group>
-            </standard-form-row>
-            <standard-form-row grid last title="广告链接">
-                <nz-input-group nzCompact>
-                    <input style="width: 80%" nz-input formControlName="link" placeholder="请贴入链接地址">
-                    <button nz-button [nzType]="'primary'">选择</button>
-                </nz-input-group>
-            </standard-form-row>
-            <standard-form-row grid last title="广告图片">
-                <nz-input-group nzCompact>
-                    <input style="width: 80%" nz-input formControlName="link" placeholder="请贴入图片地址">
-                    <nz-upload [nzAction]="action" (nzChange)="handleChange($event)">
-                        <button nz-button [nzType]="'primary'">选择</button>
-                    </nz-upload>
-                </nz-input-group>
-            </standard-form-row>
-        </div>
-    </ng-template>
-</nz-modal>

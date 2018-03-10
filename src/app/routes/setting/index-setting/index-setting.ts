@@ -13,9 +13,35 @@ export class IndexSettingPage implements OnInit {
     isVisible: boolean = false;
     loading: boolean = false;
 
+    tabs: any[] = [{
+        name: '滑动广告',
+        code: 'advs'
+    }, {
+        name: '导航项目',
+        code: 'grids'
+    }, {
+        name: '系统设置',
+        code: 'system'
+    }, {
+        name: '分享设置',
+        code: 'share'
+    }, {
+        name: '底部菜单',
+        code: 'footer'
+    }, {
+        name: '快捷菜单',
+        code: 'quick'
+    }, {
+        name: '侧边栏菜单',
+        code: 'sidebar'
+    }];
+
     form: FormGroup;
     advForm: FormGroup;
     action: string;
+
+    advsArray: FormArray;
+    gridsArray: FormArray;
     constructor(
         public fb: FormBuilder,
         private we7: We7Service
@@ -24,6 +50,8 @@ export class IndexSettingPage implements OnInit {
             advs: this.fb.array([]),
             grids: this.fb.array([])
         });
+        this.advsArray = this.form.get('advs') as FormArray;
+        this.gridsArray = this.form.get('grids') as FormArray;
 
         this.advForm = this.fb.group({
             title: [''],
@@ -36,11 +64,11 @@ export class IndexSettingPage implements OnInit {
         this.action = this.we7.getWebUrl('uploadimage');
     }
 
-    handleCancel() {
+    handleCancel(e: any) {
         this.isVisible = false;
     }
 
-    handleOk() {
+    handleOk(e: any) {
         (this.form.get('advs') as FormArray).push(this.advForm);
         this.isVisible = false;
     }

@@ -17,9 +17,11 @@ const THIRDMODULES = [
 ];
 // endregion
 // region: your componets & directives
-import { ImageUpload } from './image-upload/image-upload';
+import { AdvModel } from './adv-model/adv-model';
+const MODELS = [
+    AdvModel
+];
 const COMPONENTS = [
-    ImageUpload
 ];
 const DIRECTIVES = [];
 // endregion
@@ -41,7 +43,8 @@ const DIRECTIVES = [];
     declarations: [
         // your components
         ...COMPONENTS,
-        ...DIRECTIVES
+        ...DIRECTIVES,
+        ...MODELS
     ],
     exports: [
         CommonModule,
@@ -56,7 +59,11 @@ const DIRECTIVES = [];
         ...THIRDMODULES,
         // your components
         ...COMPONENTS,
-        ...DIRECTIVES
+        ...DIRECTIVES,
+        ...MODELS
+    ],
+    entryComponents: [
+        ...MODELS
     ]
 })
 export class SharedModule { }

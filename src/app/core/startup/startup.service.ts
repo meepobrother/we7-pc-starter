@@ -6,7 +6,6 @@ import { catchError } from 'rxjs/operators';
 import { MenuService, SettingsService, TitleService } from '@delon/theme';
 import { ACLService } from '@delon/acl';
 import { ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
-import { We7Service } from '../we7.service';
 /**
  * 用于应用启动时
  * 一般用来获取应用所需要的基础数据等
@@ -20,12 +19,12 @@ export class StartupService {
         private titleService: TitleService,
         @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
         private httpClient: HttpClient,
-        private injector: Injector,
-        private we7: We7Service
-    ) { }
+        private injector: Injector
+    ) { 
+    }
 
     private viaHttp(resolve: any, reject: any) {
-        let url = this.we7.getWebUrl('appdata');
+        let url = 'assets/app-config.json';
         zip(
             this.httpClient.get(url)
         ).pipe(
@@ -118,23 +117,8 @@ export class StartupService {
                         icon: 'icon-settings'
                     },
                     {
-                        text: '系统设置',
-                        link: '/systemsetting',
-                        icon: 'icon-settings'
-                    },
-                    {
                         text: '短信设置',
                         link: '/smssetting',
-                        icon: 'icon-settings'
-                    },
-                    {
-                        text: '分享设置',
-                        link: '/sharesetting',
-                        icon: 'icon-settings'
-                    },
-                    {
-                        text: '底部菜单',
-                        link: '/footersetting',
                         icon: 'icon-settings'
                     },
                     {

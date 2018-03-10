@@ -1,1 +1,29 @@
-home-setting
+<div nz-row>
+        <div nz-col [nzSpan]="14" [nzPush]="10">
+            <div class="App__detail">
+                <div [formGroup]="form">
+                    <nz-tabset>
+                        <nz-tab *ngFor="let tab of tabs">
+                            <ng-template #nzTabHeading>
+                                {{tab.name}}
+                            </ng-template>
+                            <system-setting *ngIf="tab.code==='system'"></system-setting>
+                            <share-setting *ngIf="tab.code==='share'"></share-setting>
+                            <sidebar-setting *ngIf="tab.code==='sidebar'"></sidebar-setting>
+                            <advs-setting *ngIf="tab.code==='advs'"></advs-setting>
+                            <grids-setting *ngIf="tab.code==='grids'"></grids-setting>
+                            <quick-setting *ngIf="tab.code==='quick'"></quick-setting>
+                            <footer-setting *ngIf="tab.code==='footer'"></footer-setting>
+                        </nz-tab>
+                    </nz-tabset>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="10" [nzPull]="14">
+            <div class="App__preview background--canvas flex-center">
+                <div class="App__mobileview">
+                    <iframe src="http://localhost:4200/app/index.php?i=2&c=entry&m=imeepos_runner&do=home" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>

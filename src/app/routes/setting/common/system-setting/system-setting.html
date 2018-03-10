@@ -1,0 +1,11 @@
+<standard-form-row grid last title="页面标题">
+    <nz-input-group nzCompact>
+        <nz-input style="width: 80%" [(ngModel)]="page.title" [nzPlaceHolder]="'请贴入分享分享标题'"></nz-input>
+    </nz-input-group>
+</standard-form-row>
+
+<standard-form-row grid last title="页面简介">
+    <nz-input-group nzCompact>
+        <nz-input style="width: 80%" [(ngModel)]="page.desc" [nzType]="'textarea'" [nzPlaceHolder]="'请贴入分享简介'"></nz-input>
+    </nz-input-group>
+</standard-form-row>

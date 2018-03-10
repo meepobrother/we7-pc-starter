@@ -1,0 +1,14 @@
+<div class="mb-md">
+    <nz-input [(ngModel)]="params.name" name="name" nzPlaceHolder="请输入姓名" style="width: 100px"></nz-input>
+    <button nz-button (click)="st.load(1)" [nzType]="'primary'">搜索</button>
+    <button nz-button (click)="params = {}; st.reset()">重置</button>
+    <button nz-button (click)="st.export()" [nzType]="'dashed'">导出</button>
+    <button nz-button (click)="add()" [nzType]="'danger'">添加</button>
+</div>
+<simple-table #st [data]="url" [extraParams]="params" [total]="total" (checkboxChange)="checkboxChange($event)" [columns]="columns"></simple-table>
+
+<nz-modal [nzVisible]="openAdd" (nzOnOk)="nzOnOk()" (nzOnCancel)="handleCancel()">
+    <ng-template #modalContent>
+        <adv-model></adv-model>
+    </ng-template>
+</nz-modal>
