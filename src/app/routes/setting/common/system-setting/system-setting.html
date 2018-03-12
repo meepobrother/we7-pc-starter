@@ -1,11 +1,16 @@
 <standard-form-row grid last title="页面标题">
     <nz-input-group nzCompact>
-        <nz-input style="width: 80%" [(ngModel)]="page.title" [nzPlaceHolder]="'请贴入分享分享标题'"></nz-input>
+        <nz-input style="width: 80%" [(ngModel)]="record.title" [nzPlaceHolder]="'请贴入分享分享标题'"></nz-input>
+    </nz-input-group>
+</standard-form-row>
+<standard-form-row grid last title="页面版权">
+    <nz-input-group nzCompact>
+        <nz-input style="width: 80%" [(ngModel)]="record.copyright" [nzType]="'textarea'" [nzPlaceHolder]="'请贴入页面版权'"></nz-input>
     </nz-input-group>
 </standard-form-row>
 
-<standard-form-row grid last title="页面简介">
-    <nz-input-group nzCompact>
-        <nz-input style="width: 80%" [(ngModel)]="page.desc" [nzType]="'textarea'" [nzPlaceHolder]="'请贴入分享简介'"></nz-input>
-    </nz-input-group>
-</standard-form-row>
+<div class="modal-footer">
+    <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="ok()">
+        保存
+    </button>
+</div>

@@ -6,25 +6,39 @@ export class We7Service {
     constructor(
         public router: Router
     ) {
+        this.parseUrl();
+    }
+
+    parseUrl() {
         let tree = this.router.parseUrl(location.search);
         this.queryParams = tree.queryParams;
+    }
+
+    get(name: string) {
+        this.parseUrl();
+        return this.queryParams[name];
     }
 
     getUrl(_do: string, _params: any = {}) {
         this.queryParams['do'] = _do;
         this.queryParams = { ...this.queryParams, ..._params };
         let url = this.serializeQueryParams(this.queryParams);
-        return url;
+        return `${url}`;
     }
 
     getMobileUrl(_do: string, _params: any = {}) {
-        return '/app/index.php' + this.getUrl(_do, _params);
+        _params['a'] = 'site';
+        _params['c'] = 'entry';
+        _params['i'] = this.get('i') ? this.get('i') : '2';
+        return `${location.protocol}//${location.host}/app/index.php${this.getUrl(_do, _params)}&c=entry&a=site`;
     }
 
-    getWebUrl(_do: string, _params: any = {}) { 
-        return '/web/index.php' + this.getUrl(_do, _params);
+    getWebUrl(_do: string, _params: any = {}) {
+        _params['a'] = 'entry';
+        _params['c'] = 'site';
+        _params['i'] = this.get('i') ? this.get('i') : '2';
+        return `${location.protocol}//${location.host}/web/index.php` + this.getUrl(_do, _params);
     }
-
 
     serializeQueryParams(params: { [key: string]: any }): string {
         const strParams: string[] = Object.keys(params).map((name) => {

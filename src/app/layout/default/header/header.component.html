@@ -1,7 +1,7 @@
 <div class="logo">
     <a [routerLink]="['/']">
-        <div class="expanded">同城跑腿</div>
-        <div class="collapsed">跑腿</div>
+        <div class="expanded">{{settings.app.name}}</div>
+        <div class="collapsed">{{settings.app.shorft}}</div>
     </a>
 </div>
 <div class="top-nav-wrap">
@@ -58,8 +58,8 @@
                 </div>
             </nz-dropdown>
         </li>
-        <li class="hidden-xs">
+        <!-- <li class="hidden-xs">
             <header-user></header-user>
-        </li>
+        </li> -->
     </ul>
 </div>

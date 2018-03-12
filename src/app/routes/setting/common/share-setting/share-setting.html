@@ -1,11 +1,29 @@
 <standard-form-row grid last title="分享标题">
     <nz-input-group nzCompact>
-        <nz-input style="width: 80%" [(ngModel)]="share.title" [nzPlaceHolder]="'请贴入分享分享标题'"></nz-input>
+        <nz-input style="width: 80%" [(ngModel)]="record.title" [nzPlaceHolder]="'请贴入分享分享标题'"></nz-input>
     </nz-input-group>
 </standard-form-row>
 
 <standard-form-row grid last title="分享简介">
     <nz-input-group nzCompact>
-        <nz-input style="width: 80%" [(ngModel)]="share.desc" [nzType]="'textarea'" [nzPlaceHolder]="'请贴入分享简介'"></nz-input>
+        <nz-input style="width: 80%" [(ngModel)]="record.desc" [nzType]="'textarea'" [nzPlaceHolder]="'请贴入分享简介'"></nz-input>
     </nz-input-group>
 </standard-form-row>
+
+<standard-form-row [title]="'分享图标'">
+    <nz-input-group nzCompact>
+        <input style="width: 80%" nz-input nzShowUploadList="false" [(ngModel)]="record.icon" placeholder="请贴入网络图片地址">
+        <nz-upload [nzAction]="uploadUrl" (nzChange)="handleChange($event)">
+            <button nz-button>
+                <i class="anticon anticon-upload"></i>
+                <span>上传</span>
+            </button>
+        </nz-upload>
+    </nz-input-group>
+</standard-form-row>
+
+<div class="modal-footer">
+    <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="ok()">
+        保存
+    </button>
+</div>

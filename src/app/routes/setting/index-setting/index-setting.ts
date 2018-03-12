@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { We7Service } from '@core/we7.service';
 import { NzMessageService, UploadFile } from 'ng-zorro-antd';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'index-setting',
@@ -24,7 +25,7 @@ export class IndexSettingPage implements OnInit {
         code: 'system'
     }, {
         name: '分享设置',
-        code: 'share'
+        code: 'share'  
     }, {
         name: '底部菜单',
         code: 'footer'
@@ -42,25 +43,34 @@ export class IndexSettingPage implements OnInit {
 
     advsArray: FormArray;
     gridsArray: FormArray;
+
+    previewUrl: SafeUrl;
     constructor(
         public fb: FormBuilder,
-        private we7: We7Service
+        private we7: We7Service,
+        private dom: DomSanitizer
     ) {
         this.form = this.fb.group({
             advs: this.fb.array([]),
-            grids: this.fb.array([])
-        });
-        this.advsArray = this.form.get('advs') as FormArray;
-        this.gridsArray = this.form.get('grids') as FormArray;
-
-        this.advForm = this.fb.group({
-            title: [''],
-            image: [''],
-            link: ['']
+            grids: this.fb.array([]),
+            footer: this.fb.array([]),
+            quick: this.fb.array([]),
+            sidebar: this.fb.array([]),
+            system: this.fb.group({
+                title: '',
+                desc: ''
+            }),
+            share: this.fb.group({
+                title: '',
+                desc: '',
+                icon: ''
+            })
         });
     }
 
     ngOnInit() {
+        let homeUrl = this.we7.getMobileUrl('index');
+        this.previewUrl = this.dom.bypassSecurityTrustResourceUrl(homeUrl);
         this.action = this.we7.getWebUrl('uploadimage');
     }
 

@@ -1,1 +1,32 @@
-添加广告
+<div class="ngForm">
+    <standard-form-row [title]="'广告标题'">
+        <nz-input-group nzCompact>
+            <input style="width: 80%" nz-input [(ngModel)]="record.title" placeholder="请贴入广告标题">
+        </nz-input-group>
+    </standard-form-row>
+    <standard-form-row [title]="'广告链接'">
+        <nz-input-group nzCompact>
+            <input style="width: 80%" nz-input [(ngModel)]="record.link" placeholder="请贴入网络地址">
+            <button nz-button [nzType]="'primary'" (click)="linkSelect()">选择</button>
+        </nz-input-group>
+    </standard-form-row>
+    <standard-form-row [title]="'广告图片'">
+        <nz-input-group nzCompact>
+            <input style="width: 80%" nz-input nzShowUploadList="false" [(ngModel)]="record.image" placeholder="请贴入网络图片地址">
+            <nz-upload [nzAction]="uploadUrl" (nzChange)="handleChange($event)">
+                <button nz-button>
+                    <i class="anticon anticon-upload"></i>
+                    <span>上传</span>
+                </button>
+            </nz-upload>
+        </nz-input-group>
+    </standard-form-row>
+</div>
+<div class="modal-footer">
+    <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="cancel()">
+        取消
+    </button>
+    <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="ok()">
+        保存
+    </button>
+</div>

@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../shibida_mfans/template/web/",
       "assets": [
         "assets",
         "favicon.ico"

@@ -18,11 +18,44 @@ const THIRDMODULES = [
 // endregion
 // region: your componets & directives
 import { AdvModel } from './adv-model/adv-model';
+import { GridsModel } from './grids-model/grids-model';
+
+
+import { LinkSelect } from './link-select/link-select';
+import { LinkArticle } from './link-select/link-article/link-article';
+import { LinkCate } from './link-select/link-cate/link-cate';
+import { LinkEntry } from './link-select/link-entry/link-entry';
+import { LinkLocation } from './link-select/link-location/link-location';
+import { LinkModule } from './link-select/link-module/link-module';
+import { LinkNews } from './link-select/link-news/link-news';
+import { LinkPage } from './link-select/link-page/link-page';
+import { LinkTelphone } from './link-select/link-telphone/link-telphone';
+import { LinkMine } from './link-select/link-mine/link-mine';
+
+
+import { IconSelect } from './icon-select/icon-select';
+import { ImageSelect } from './image-select/image-select';
+
 const MODELS = [
-    AdvModel
+    AdvModel,
+    LinkSelect,
+    LinkArticle,
+    LinkCate,
+    LinkEntry,
+    LinkLocation,
+    LinkModule,
+    LinkNews,
+    LinkPage,
+    LinkTelphone,
+    LinkMine,
+    GridsModel
 ];
+
 const COMPONENTS = [
+    IconSelect,
+    ImageSelect
 ];
+
 const DIRECTIVES = [];
 // endregion
 

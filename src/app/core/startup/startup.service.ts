@@ -62,8 +62,9 @@ export class StartupService {
         // }
         // mock
         const app: any = {
-            name: `同城跑腿`,
-            description: `致力于同城物流解决方案`
+            name: `事必达汽修`,
+            shorft: '汽修',
+            description: `致力于汽车维修店解决方案`
         };
         const user: any = {
             name: 'Admin',
@@ -90,37 +91,37 @@ export class StartupService {
                     }
                 ]
             },
-            {
-                text: '管理',
-                group: true,
-                children: [{
-                    text: '任务管理',
-                    link: '/taskmanage',
-                    icon: 'icon-grid'
-                }, {
-                    text: '跑腿管理',
-                    link: '/runnermanage',
-                    icon: 'icon-grid'
-                }, {
-                    text: '会员管理',
-                    link: '/membermanage',
-                    icon: 'icon-grid'
-                }]
-            },
+            // {
+            //     text: '管理',
+            //     group: true,
+            //     children: [{
+            //         text: '任务管理',
+            //         link: '/taskmanage',
+            //         icon: 'icon-grid'
+            //     }, {
+            //         text: '跑腿管理',
+            //         link: '/runnermanage',
+            //         icon: 'icon-grid'
+            //     }, {
+            //         text: '会员管理',
+            //         link: '/membermanage',
+            //         icon: 'icon-grid'
+            //     }]
+            // },
             {
                 text: '设置',
                 link: '/setting',
                 children: [
-                    {
-                        text: '设置',
-                        link: '/setting',
-                        icon: 'icon-settings'
-                    },
-                    {
-                        text: '短信设置',
-                        link: '/smssetting',
-                        icon: 'icon-settings'
-                    },
+                    // {
+                    //     text: '设置',
+                    //     link: '/setting',
+                    //     icon: 'icon-settings'
+                    // },
+                    // {
+                    //     text: '短信设置',
+                    //     link: '/smssetting',
+                    //     icon: 'icon-settings'
+                    // },
                     {
                         text: '应用首页',
                         link: '/indexsetting',

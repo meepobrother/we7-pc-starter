@@ -1,0 +1,10 @@
+<div class="link-list-container" *ngIf="list">
+    <div class="link-list" *ngIf="list.length>0">
+        <div class="link-list-item" *ngFor="let m of list">
+            <h2 class="link-list-title">{{m.title}}</h2>
+            <button *ngFor="let btn of m.menus" (click)="onSelect(btn)" nz-button [nzType]="'primary'">
+                <span>{{btn.title}}</span>
+            </button>
+        </div>
+    </div>
+</div>

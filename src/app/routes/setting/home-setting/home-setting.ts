@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { We7Service } from '@core/we7.service';
 
@@ -28,14 +29,21 @@ export class HomeSettingPage implements OnInit {
         code: 'sidebar'
     }];
     form: FormGroup;
+
+    previewUrl: SafeUrl;
     constructor(
         public fb: FormBuilder,
-        private we7: We7Service
-    ) { 
+        private we7: We7Service,
+        private dom: DomSanitizer
+    ) {
         this.form = this.fb.group({
             grids: this.fb.array([])
         });
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        let homeUrl = this.we7.getMobileUrl('home');
+        console.log(homeUrl);
+        this.previewUrl = this.dom.bypassSecurityTrustResourceUrl(homeUrl);
+    }
 }

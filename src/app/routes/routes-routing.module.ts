@@ -37,11 +37,9 @@ const routes: Routes = [
             { path: 'homesetting', component: HomeSettingPage, data: { title: '个人中心设置' } },
             { path: 'indexsetting', component: IndexSettingPage, data: { title: '首页设置' } },
             { path: 'smssetting', component: SmsSettingPage, data: { title: '短信设置' } },
-
             { path: 'runnermanage', component: RunnerManage, data: { title: '跑腿管理' } },
             { path: 'taskmanage', component: TaskManage, data: { title: '任务管理' } },
             { path: 'membermanage', component: MemberManage, data: { title: '会员管理' } },
-            
         ]
     },
     {

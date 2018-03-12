@@ -1,0 +1,17 @@
+
+<nz-tabset>
+    <nz-tab *ngFor="let tab of tabs">
+        <ng-template #nzTabHeading>
+            {{tab.title}}
+        </ng-template>
+        <link-article *ngIf="tab.op === 'article'"></link-article>
+        <link-cate *ngIf="tab.op === 'cate'"></link-cate>
+        <link-entry (change)="onChange($event)" *ngIf="tab.op === 'entry'"></link-entry>
+        <link-mine *ngIf="tab.op === 'mine'"></link-mine>
+        <link-location *ngIf="tab.op === 'location'"></link-location>
+        <link-module *ngIf="tab.op === 'module'"></link-module>
+        <link-news *ngIf="tab.op === 'news'"></link-news>
+        <link-page *ngIf="tab.op === 'page'"></link-page>
+        <link-telphone *ngIf="tab.op === 'telphone'"></link-telphone>
+    </nz-tab>
+</nz-tabset>
